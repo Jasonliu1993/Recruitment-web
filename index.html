@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="indexApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +11,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/lib/angular.min.js"></script>
     <style>
         .div-center {
             height: 300px;
@@ -39,39 +40,47 @@
         .text-adjust {
             margin-top: 10px;
         }
+
+        .error {
+            text-align: center;
+            color: red;
+        }
     </style>
 
 </head>
 <body>
 <div class="container" style="background: url('images/loginBP.jpg') center center; width: 100%;height: 781px; ">
-    <div class="div-center">
+    <div class="div-center" ng-controller="indexCtrl">
         <form class="form-horizontal" role="form">
             <div class="title">
                 <span class="title-content">登录</span>
             </div>
             <div class="col-sm-12 text-adjust">
-                <label for="userName" class="col-sm-3 control-label text-center">用户名:</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="userName" placeholder="用户名">
+                <label for="userNameId" class="col-sm-3 control-label text-center">用户名:</label>
+                <div class="col-sm-9"  >
+                    <input type="text" class="form-control" ng-model="userName" id="userNameId" placeholder="用户名">
                 </div>
             </div>
             <div class="col-sm-12 text-adjust">
-                <label for="userPW" class="col-sm-3 control-label text-center" style="line-height: 100%;">密码:</label>
+                <label for="userPWId" class="col-sm-3 control-label text-center" style="line-height: 100%;">密码:</label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control" id="userPW" placeholder="密码">
+                    <input type="password" class="form-control" ng-model="userPassword" id="userPWId" placeholder="密码">
                 </div>
             </div>
             <div class="col-sm-12 text-adjust">
-                <div class="col-sm-9 col-sm-offset-2">
-                    <button type="submit" class="btn btn-default" style="width: 100%; background-color: #2aabd2">登录
+                <div class="col-sm-9 col-sm-offset-2" >
+                    <button type="button" class="btn btn-default" style="width: 100%; background-color: #2aabd2" id="submit" ng-click="submit()">登录
                     </button>
                 </div>
             </div>
             <div class="col-sm-12 text-adjust">
                 <div class="col-sm-9 col-sm-offset-2">
-                    <button type="submit" class="btn btn-default" style="width: 100%; background-color: #2aabd2">注册
+                    <button type="button" class="btn btn-default" style="width: 100%; background-color: #2aabd2" id="register">注册
                     </button>
                 </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="error" ng-bind="errorMessage"></div>
             </div>
         </form>
     </div>
@@ -79,8 +88,12 @@
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
 <script src="js/jquery-3.1.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+<script src="js/app/index.js"></script>
+<script src="js/controllers/indexController.js"></script>
+<script src="js/directives/indexDirective.js"></script>
 </body>
 </html>
